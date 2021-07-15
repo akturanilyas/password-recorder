@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:password_saver/src/model/request/signin_request_model.dart';
 import 'package:password_saver/src/model/request/signup_request_model.dart';
 
 class UserRepository {
@@ -7,6 +8,20 @@ class UserRepository {
   Future<Response> createUser(SignUpRequest request) async {
     Response response = await dio.post(
       'http://10.0.2.2:3500/api/auth/register',
+      data: request,
+      options: Options(
+        followRedirects: false,
+        validateStatus: (status) {
+          return status! < 501;
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> signIn(SignInRequest request) async {
+    Response response = await dio.post(
+      'http://10.0.2.2:3500/api/auth/login',
       data: request,
       options: Options(
         followRedirects: false,

@@ -6,15 +6,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'auth/welcome_page.dart';
 import 'home/home.dart';
 
-class Root extends StatelessWidget {
+class Root extends StatefulWidget {
   const Root({Key? key}) : super(key: key);
 
+  @override
+  _RootState createState() => _RootState();
+}
+
+class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context, listen: true);
     if (authProvider.isLoggedIn) {
-      // TODO: Change this a function like Screens
-      return const Home();
+      // TODO: Add navigation provider
+
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => Home()));
+
+      return Home();
     } else {
       return WelcomePage();
     }

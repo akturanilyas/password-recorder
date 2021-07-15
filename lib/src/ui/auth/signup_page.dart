@@ -34,9 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _usernameField(String title) {
-    final validationProvider =
-        Provider.of<ValidationProvider>(context, listen: true);
+  Widget _usernameField(String title, ValidationProvider validationProvider) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -61,9 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _emailField(String title) {
-    final validationProvider =
-        Provider.of<ValidationProvider>(context, listen: true);
+  Widget _emailField(String title, ValidationProvider validationProvider) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -77,9 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 10,
           ),
           TextField(
-              onChanged: (value) {
-                validationProvider.setEmail(value);
-              },
+              onChanged: (value) => {validationProvider.setEmail(value)},
               decoration: InputDecoration(
                   errorText: validationProvider.email.error,
                   border: InputBorder.none,
@@ -90,9 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _passwordField(String title) {
-    final validationProvider =
-        Provider.of<ValidationProvider>(context, listen: true);
+  Widget _passwordField(String title, ValidationProvider validationProvider) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -122,34 +114,37 @@ class _SignUpPageState extends State<SignUpPage> {
     final validationProvider =
         Provider.of<ValidationProvider>(context, listen: true);
     final authProvider = Provider.of<AuthProvider>(context, listen: true);
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(vertical: 15),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(2, 4),
-                blurRadius: 5,
-                spreadRadius: 2)
-          ],
-          gradient:
-              LinearGradient(colors: [Color(0xff07489c), Color(0xff1F66DE)])),
-      child: InkWell(
-        onTap: () async {
-          if (validationProvider.username.value == null ||
-              validationProvider.email.value == null ||
-              validationProvider.password.value == null) {
-            print('Gecersiz');
-          } else {
-            await authProvider.signUp(
-                validationProvider.username.value!,
-                validationProvider.email.value!,
-                validationProvider.password.value!);
-          }
-        },
+    return InkWell(
+      onTap: () async {
+        if (validationProvider.username.value == null ||
+            validationProvider.email.value == null ||
+            validationProvider.password.value == null) {
+          print('Gecersiz');
+        } else {
+          String result = await authProvider.signUp(
+              validationProvider.username.value!,
+              validationProvider.email.value!,
+              validationProvider.password.value!);
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(result)));
+        }
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 15),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 2)
+            ],
+            gradient:
+                LinearGradient(colors: [Color(0xff07489c), Color(0xff1F66DE)])),
         child: Text(
           'Register Now',
           style: TextStyle(fontSize: 20, color: Colors.white),
@@ -225,11 +220,16 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget _emailPasswordWidget() {
+    final validationProvider =
+        Provider.of<ValidationProvider>(context, listen: true);
     return Column(
       children: <Widget>[
-        _usernameField('Username'),
-        _emailField('Email'),
-        _passwordField('Password'),
+        _usernameField(
+          'Username',
+          validationProvider,
+        ),
+        _emailField('Email', validationProvider),
+        _passwordField('Password', validationProvider),
       ],
     );
   }
