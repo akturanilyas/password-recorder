@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key? key}) : super(key: key);
+  static const String path = '/signup';
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -156,8 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget _loginAccountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+        Navigator.pushReplacementNamed(context, '/signin');
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),

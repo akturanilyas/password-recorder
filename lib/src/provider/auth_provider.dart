@@ -21,7 +21,6 @@ class AuthProvider with ChangeNotifier {
     switch (response.statusCode) {
       case 200:
         isLoggedIn = true;
-
         prefs.setString('authorization', response.data['token'].toString());
         notifyListeners();
         return 'User successfuly login';

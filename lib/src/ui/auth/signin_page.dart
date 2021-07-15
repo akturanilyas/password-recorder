@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+  static const String path = '/signin';
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -119,8 +120,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _createAccountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => SignUpPage()));
+        Navigator.pushReplacementNamed(context, '/signup');
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
@@ -175,10 +175,15 @@ class _LoginPageState extends State<LoginPage> {
               validationProvider.email.value!,
               validationProvider.password.value!);
 
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(result),
-            duration: Duration(seconds: 5),
-          ));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(result),
+              duration: Duration(seconds: 5),
+            ),
+          );
+          if (result == 'User successfuly login') {
+            Navigator.pop(context);
+          }
         }
       },
       child: Container(

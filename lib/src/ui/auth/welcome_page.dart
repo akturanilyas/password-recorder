@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/ui/auth/signin_page.dart';
-
-import 'signup_page.dart';
+import 'package:password_saver/src/ui/auth/signup_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
+  static const String path = '/welcome';
 
   @override
   _WelcomePageState createState() => _WelcomePageState();
@@ -14,9 +14,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget _submitButton() {
     return InkWell(
       onTap: () {
-        //TODO: use getx
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.pushNamed(context, '/signin');
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -43,9 +41,8 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget _signUpButton() {
     return InkWell(
       onTap: () {
-        //TODO: use getx
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignUpPage()));
+        Navigator.pushNamed(
+            context, '/signup');
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
