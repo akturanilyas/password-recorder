@@ -9,9 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthProvider with ChangeNotifier {
   late User _user;
   bool _isLoggedIn = false;
+  bool _isLoading = false;
 
   User get user => _user;
   bool get isLoggedIn => _isLoggedIn;
+  bool get isLoading => _isLoading;
 
   Future<String> signIn(String email, String password) async {
     SignInRequest request = SignInRequest(email, password);
@@ -49,16 +51,24 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> signOut() async {}
+  Future<void> signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('authorization', '');
+    print(prefs.getString('authorization'));
+    await setLoggedIn();
+  }
 
   Future<void> setLoggedIn() async {
+    _isLoading = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? token = prefs.getString('authorization');
 
-    if (token == '' || token == null)
+    if (token == '' || token == null) {
       _isLoggedIn = false;
-    else {
+    } else {
       _isLoggedIn = true;
     }
+    _isLoading = false;
+    notifyListeners();
   }
 }

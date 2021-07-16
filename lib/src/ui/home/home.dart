@@ -12,7 +12,8 @@ class Home extends StatelessWidget {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-              onPressed: null, icon: Icon(Icons.settings, color: Colors.white))
+              onPressed: () => {Navigator.pushNamed(context, '/settings')},
+              icon: Icon(Icons.settings, color: Colors.white))
         ],
       ),
       body: Column(

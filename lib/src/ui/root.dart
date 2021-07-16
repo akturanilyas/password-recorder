@@ -15,7 +15,7 @@ class Root extends StatefulWidget {
 
 class _RootState extends State<Root> {
   @override
-  initState() {
+  void initState() {
     Provider.of<AuthProvider>(context, listen: false).setLoggedIn();
     super.initState();
   }
@@ -23,9 +23,11 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context, listen: true);
-    if (authProvider.isLoggedIn) {
+
+    if (authProvider.isLoading) {
       return LoadingPage();
-      //return Home();
+    } else if (authProvider.isLoggedIn) {
+      return Home();
     } else {
       return WelcomePage();
     }
