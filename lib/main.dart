@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:password_saver/generated/l10n.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
 import 'package:password_saver/src/provider/navigation.provider.dart';
+import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/provider/settings_provider.dart';
 import 'package:password_saver/src/provider/validation_provider.dart';
 import 'package:password_saver/src/ui/root.dart';
@@ -20,6 +21,7 @@ class _MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ValidationProvider()),
+        ChangeNotifierProvider(create: (_) => PasswordProvider()),
       ],
       child: ChangeNotifierProvider<LanguageProvider>(
         create: (context) => LanguageProvider(),

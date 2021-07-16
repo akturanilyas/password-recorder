@@ -19,8 +19,8 @@ class AuthProvider with ChangeNotifier {
     SignInRequest request = SignInRequest(email, password);
     UserRepository userRepository = UserRepository();
     Response response = await userRepository.signIn(request);
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     switch (response.statusCode) {
       case 200:
         _isLoggedIn = true;
@@ -54,7 +54,6 @@ class AuthProvider with ChangeNotifier {
   Future<void> signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('authorization', '');
-    print(prefs.getString('authorization'));
     await setLoggedIn();
   }
 

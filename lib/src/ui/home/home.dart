@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_saver/src/widget/create_password.dart';
 import 'package:password_saver/src/widget/my_password.dart';
 
 class Home extends StatelessWidget {
@@ -21,7 +22,7 @@ class Home extends StatelessWidget {
         children: [
           MyPasswords(),
           InkWell(
-              onTap: null,
+              onTap: () => {addPassword(context)},
               child: Container(
                   color: Colors.blue,
                   width: MediaQuery.of(context).size.width,
