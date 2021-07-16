@@ -9,13 +9,19 @@ class PasswordProvider with ChangeNotifier {
 
   List<Password> get myPasswords => _myPasswords;
 
-  Future<void> setMyPasswords() async {}
+  Future<void> getMyPasswords() async {
+    //TODO:  implement loading
+    _myPasswords = await passwordRepository.getAllPassword();
+    notifyListeners();
+  }
 
   Future<String> createPassword(
       String name, String password, String description) async {
     PasswordRequest request = PasswordRequest(name, password, description);
 
     await passwordRepository.createPassword(request);
+    //todo Add: Handler
+    getMyPasswords();
     return 'text';
   }
 }

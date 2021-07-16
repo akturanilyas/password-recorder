@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/widget/create_password.dart';
-import 'package:password_saver/src/widget/my_password.dart';
+import 'package:password_saver/src/widget/password_tile.dart';
+import 'package:provider/provider.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    Provider.of<PasswordProvider>(context, listen: false).getMyPasswords();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +34,7 @@ class Home extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          MyPasswords(),
+          myPasswords(),
           InkWell(
               onTap: () => {addPassword(context)},
               child: Container(
@@ -29,6 +43,19 @@ class Home extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .1,
                   child: Icon(Icons.add)))
         ],
+      ),
+    );
+  }
+
+  Widget myPasswords() {
+    final myPasswords =
+        Provider.of<PasswordProvider>(context, listen: false).myPasswords;
+    return Expanded(
+      child: ListView.builder(
+        itemCount: myPasswords.length,
+        itemBuilder: (BuildContext context, int index) {
+          return passwordTile(myPasswords[index]);
+        },
       ),
     );
   }

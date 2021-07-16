@@ -43,8 +43,7 @@ Future<bool?> addPassword(BuildContext context) {
           onPressed: () => {
             passwordProvider.createPassword(nameController.text,
                 passwordController.text, descriptionController.text),
-            //todo:
-            //Navigator.pop(context)
+            Navigator.pop(context)
           },
           child: Text(
             'Create',
