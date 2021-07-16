@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
 import 'package:password_saver/src/provider/validation_provider.dart';
-import 'package:password_saver/src/ui/auth/signup_page.dart';
 import 'package:password_saver/src/widget/bezier_container.dart';
 import 'package:provider/provider.dart';
 
@@ -213,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: Container(
+        body: SizedBox(
       height: height,
       child: Stack(
         children: <Widget>[

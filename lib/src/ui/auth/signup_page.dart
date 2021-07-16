@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
 import 'package:password_saver/src/provider/validation_provider.dart';
-import 'package:password_saver/src/ui/auth/signin_page.dart';
 import 'package:password_saver/src/widget/bezier_container.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
-  SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({Key? key}) : super(key: key);
   static const String path = '/signup';
 
   @override
@@ -120,6 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
         if (validationProvider.username.value == null ||
             validationProvider.email.value == null ||
             validationProvider.password.value == null) {
+          // ignore: avoid_print
           print('Gecersiz');
         } else {
           String result = await authProvider.signUp(
@@ -238,7 +238,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: height,
         child: Stack(
           children: <Widget>[

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/widget/logo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -14,9 +13,6 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget _submitButton() {
     return InkWell(
       onTap: () async {
-        SharedPreferences preferences = await SharedPreferences.getInstance();
-
-        print(preferences.getString('authorization'));
         Navigator.pushNamed(context, '/signin');
       },
       child: Container(

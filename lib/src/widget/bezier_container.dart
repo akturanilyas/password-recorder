@@ -8,8 +8,7 @@ class BezierContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Transform.rotate(
+    return Transform.rotate(
       angle: -pi / 3.5,
       child: ClipPath(
         clipper: ClipPainter(),
@@ -23,6 +22,6 @@ class BezierContainer extends StatelessWidget {
                   colors: [Color(0xff07489c), Color(0xff1F66DE)])),
         ),
       ),
-    ));
+    );
   }
 }

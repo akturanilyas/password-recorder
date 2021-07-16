@@ -8,7 +8,7 @@ import 'package:password_saver/src/ui/setting/setting.dart';
 
 class NavigationProvider with ChangeNotifier {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    //final args = settings.arguments;
 
     switch (settings.name) {
       case Root.path:
