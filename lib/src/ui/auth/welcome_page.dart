@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:password_saver/src/ui/auth/signin_page.dart';
-import 'package:password_saver/src/ui/auth/signup_page.dart';
+import 'package:password_saver/src/widget/logo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -13,7 +13,10 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   Widget _submitButton() {
     return InkWell(
-      onTap: () {
+      onTap: () async {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+
+        print(preferences.getString('authorization'));
         Navigator.pushNamed(context, '/signin');
       },
       child: Container(
@@ -41,8 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget _signUpButton() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-            context, '/signup');
+        Navigator.pushNamed(context, '/signup');
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -57,39 +59,6 @@ class _WelcomePageState extends State<WelcomePage> {
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
-    );
-  }
-
-  Widget _title() {
-    return Column(
-      children: [
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(children: [
-            TextSpan(
-              text: 'pass',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'word',
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
-          ]),
-        ),
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(children: [
-            TextSpan(
-              text: 'recor',
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'der',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-          ]),
-        ),
-      ],
     );
   }
 
@@ -117,7 +86,7 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _title(),
+              Logo(),
               SizedBox(
                 height: 80,
               ),
