@@ -16,8 +16,7 @@ class Settings extends StatelessWidget {
         leading: Icon(Icons.exit_to_app),
         onTap: () async {
           await authProvider.signOut();
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/welcome', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
         },
       ),
     );

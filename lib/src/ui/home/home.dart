@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/widget/create_password.dart';
 import 'package:password_saver/src/widget/password_tile.dart';
@@ -21,6 +22,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final passwordProvider =
+        Provider.of<PasswordProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         title: Text('My Passwords'),
@@ -34,7 +37,21 @@ class _HomeState extends State<Home> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          myPasswords(),
+          if (passwordProvider.isLoading)
+            Expanded(
+                child: Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * .1,
+                child: Center(
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.orbit,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ))
+          else
+            myPasswords(),
           InkWell(
               onTap: () => {addPassword(context)},
               child: Container(
@@ -49,7 +66,7 @@ class _HomeState extends State<Home> {
 
   Widget myPasswords() {
     final myPasswords =
-        Provider.of<PasswordProvider>(context, listen: false).myPasswords;
+        Provider.of<PasswordProvider>(context, listen: true).myPasswords;
     return Expanded(
       child: ListView.builder(
         itemCount: myPasswords.length,

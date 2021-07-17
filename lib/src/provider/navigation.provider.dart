@@ -9,7 +9,7 @@ import 'package:password_saver/src/ui/setting/setting.dart';
 class NavigationProvider with ChangeNotifier {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     //final args = settings.arguments;
-
+    print('Pushed ${settings.name}');
     switch (settings.name) {
       case Root.path:
         return MaterialPageRoute(builder: (_) => Root());

@@ -6,12 +6,15 @@ import 'package:password_saver/src/repository/password_repository.dart';
 class PasswordProvider with ChangeNotifier {
   List<Password> _myPasswords = [];
   PasswordRepository passwordRepository = PasswordRepository();
+  bool _isLoading = false;
 
   List<Password> get myPasswords => _myPasswords;
+  bool get isLoading => _isLoading;
 
   Future<void> getMyPasswords() async {
-    //TODO:  implement loading
+    _isLoading = true;
     _myPasswords = await passwordRepository.getAllPassword();
+    _isLoading = false;
     notifyListeners();
   }
 

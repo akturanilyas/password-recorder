@@ -33,10 +33,6 @@ class LoadingPage extends StatelessWidget {
           ],
         ),
       ),
-
-      // Center(
-      //   child: CircularProgressIndicator(),
-      // ),
     );
   }
 }
