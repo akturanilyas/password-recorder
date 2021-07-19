@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
-import 'package:password_saver/src/widget/create_password.dart';
+import 'package:password_saver/src/widget/password_popup.dart';
 import 'package:password_saver/src/widget/password_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
           else
             myPasswords(),
           InkWell(
-              onTap: () => {addPassword(context)},
+              onTap: () => {passwordPopUp(context)},
               child: Container(
                   color: Colors.blue,
                   width: MediaQuery.of(context).size.width,
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
       child: ListView.builder(
         itemCount: myPasswords.length,
         itemBuilder: (BuildContext context, int index) {
-          return passwordTile(myPasswords[index],context);
+          return passwordTile(myPasswords[index], context);
         },
       ),
     );

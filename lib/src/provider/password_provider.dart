@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/model/password_model.dart';
+import 'package:password_saver/src/model/request/edit_password_request_model.dart';
 import 'package:password_saver/src/model/request/password_request_model.dart';
 import 'package:password_saver/src/repository/password_repository.dart';
 
@@ -28,13 +29,25 @@ class PasswordProvider with ChangeNotifier {
     return 'text';
   }
 
+  Future<String> editPassword(
+      String id, String name, String password, String description) async {
+    EditPasswordRequest request =
+        EditPasswordRequest(id, name, password, description);
+    await passwordRepository.editPassword(request);
+
+    getMyPasswords();
+    notifyListeners();
+    return 'text';
+  }
+
   Future<String> deletePassword(String id) async {
     bool status = await passwordRepository.deletePassword(id);
 
     if (status == true) {
-      myPasswords.removeWhere((element) => id == element.id ? true : false);
+      // ignore: avoid_bool_literals_in_conditional_expressions
+      myPasswords.removeWhere((password) => id == password.id ? true : false);
       notifyListeners();
-      return 'Password';
+      return 'Password succesfully deleted';
     }
     return "Password can't be deleted.";
   }

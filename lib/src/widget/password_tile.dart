@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:password_saver/src/model/password_model.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
+import 'package:password_saver/src/widget/password_popup.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -12,25 +13,15 @@ Slidable passwordTile(Password myPassword, BuildContext context) {
     actionPane: SlidableDrawerActionPane(),
     actions: <Widget>[
       IconSlideAction(
-        caption: 'Archive',
-        color: Colors.blue,
-        icon: Icons.archive,
-        // onTap: () => _showSnackBar('Archive'),
-      ),
-      IconSlideAction(
-        caption: 'Share',
+        caption: 'Edit',
         color: Colors.indigo,
-        icon: Icons.share,
-        // onTap: () => _showSnackBar('Share'),
+        icon: Icons.edit,
+        onTap: () {
+          passwordPopUp(context, myPassword: myPassword);
+        },
       ),
     ],
     secondaryActions: <Widget>[
-      IconSlideAction(
-        caption: 'More',
-        color: Colors.black45,
-        icon: Icons.more_horiz,
-        // onTap: () => _showSnackBar('More'),
-      ),
       IconSlideAction(
         caption: 'Delete',
         color: Colors.red,
