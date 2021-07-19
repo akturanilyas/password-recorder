@@ -27,4 +27,15 @@ class PasswordProvider with ChangeNotifier {
     getMyPasswords();
     return 'text';
   }
+
+  Future<String> deletePassword(String id) async {
+    bool status = await passwordRepository.deletePassword(id);
+
+    if (status == true) {
+      myPasswords.removeWhere((element) => id == element.id ? true : false);
+      notifyListeners();
+      return 'Password';
+    }
+    return "Password can't be deleted.";
+  }
 }

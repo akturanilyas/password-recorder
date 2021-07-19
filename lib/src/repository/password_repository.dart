@@ -50,5 +50,24 @@ class PasswordRepository {
     return myPasswords;
   }
 
-  Future<void> deletePassword() async {}
+  Future<bool> deletePassword(String id) async {
+    TokenService token = TokenService();
+    IdService idService = IdService();
+
+    Response response = await dio.delete(
+      'http://10.0.2.2:3500/api/users/${await idService.getId()}/password/$id',
+      options: Options(
+        headers: {'auth-token': await token.getToken()},
+        followRedirects: false,
+        validateStatus: (status) {
+          return status! < 501;
+        },
+      ),
+    );
+
+    if (response.statusCode == 202) {
+      return true;
+    }
+    return false;
+  }
 }
