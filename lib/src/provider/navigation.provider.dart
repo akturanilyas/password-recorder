@@ -4,6 +4,7 @@ import 'package:password_saver/src/ui/auth/signup_page.dart';
 import 'package:password_saver/src/ui/auth/welcome_page.dart';
 import 'package:password_saver/src/ui/not_found/not_found.dart';
 import 'package:password_saver/src/ui/root.dart';
+import 'package:password_saver/src/ui/setting/language.dart';
 import 'package:password_saver/src/ui/setting/setting.dart';
 
 class NavigationProvider with ChangeNotifier {
@@ -19,8 +20,11 @@ class NavigationProvider with ChangeNotifier {
         return MaterialPageRoute(builder: (_) => SignUpPage());
       case WelcomePage.path:
         return MaterialPageRoute(builder: (_) => WelcomePage());
-      case Settings.path:
-        return MaterialPageRoute(builder: (_) => Settings());
+      case SettingsPage.path:
+        return MaterialPageRoute(builder: (_) => SettingsPage());
+      case LanguagePage.path:
+        return MaterialPageRoute(builder: (_) => LanguagePage());
+
       default:
         return MaterialPageRoute(builder: (_) => NotFoundPage());
     }
