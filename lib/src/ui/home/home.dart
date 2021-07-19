@@ -16,7 +16,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     Provider.of<PasswordProvider>(context, listen: false).getMyPasswords();
-
     super.initState();
   }
 
@@ -71,7 +70,7 @@ class _HomeState extends State<Home> {
       child: ListView.builder(
         itemCount: myPasswords.length,
         itemBuilder: (BuildContext context, int index) {
-          return passwordTile(myPasswords[index]);
+          return passwordTile(myPasswords[index],context);
         },
       ),
     );

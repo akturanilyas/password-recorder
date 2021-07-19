@@ -13,7 +13,9 @@ class Password {
 
   final User? user;
 
-  Password(this.id, this.name, this.description, this.user);
+  final String? password;
+
+  Password(this.id, this.name, this.description, this.user, this.password);
 
   factory Password.fromJson(Map<String, dynamic> json) =>
       _$PasswordFromJson(json);

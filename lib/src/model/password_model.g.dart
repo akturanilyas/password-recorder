@@ -14,6 +14,7 @@ Password _$PasswordFromJson(Map<String, dynamic> json) {
     json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
+    json['password'] as String?,
   );
 }
 
@@ -22,4 +23,5 @@ Map<String, dynamic> _$PasswordToJson(Password instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'user': instance.user,
+      'password': instance.password,
     };
