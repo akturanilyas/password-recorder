@@ -6,14 +6,16 @@ import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/widget/password_popup.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:password_saver/generated/l10n.dart';
 
 Slidable passwordTile(Password myPassword, BuildContext context) {
   final passwordProvider = Provider.of<PasswordProvider>(context, listen: true);
+  var lang = S.of(context);
   return Slidable(
     actionPane: SlidableDrawerActionPane(),
     actions: <Widget>[
       IconSlideAction(
-        caption: 'Edit',
+        caption: lang.edit,
         color: Colors.indigo,
         icon: Icons.edit,
         onTap: () {
@@ -23,7 +25,7 @@ Slidable passwordTile(Password myPassword, BuildContext context) {
     ],
     secondaryActions: <Widget>[
       IconSlideAction(
-        caption: 'Delete',
+        caption: lang.delete,
         color: Colors.red,
         icon: Icons.delete,
         onTap: () => {passwordProvider.deletePassword(myPassword.id!)},

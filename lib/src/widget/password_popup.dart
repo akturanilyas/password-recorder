@@ -3,45 +3,49 @@ import 'package:password_saver/src/model/password_model.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:password_saver/generated/l10n.dart';
 
 Future<bool?> passwordPopUp(BuildContext context, {Password? myPassword}) {
-  bool isEdit = myPassword == null ? false : true;
+  bool isEdit;
+  if (myPassword == null) {
+    isEdit = false;
+  } else {
+    isEdit = true;
+  }
   TextEditingController nameController =
-      TextEditingController(text: isEdit ? myPassword.name : '');
+      TextEditingController(text: isEdit ? myPassword!.name : '');
   TextEditingController passwordController =
-      TextEditingController(text: isEdit ? myPassword.password : '');
+      TextEditingController(text: isEdit ? myPassword!.password : '');
   TextEditingController descriptionController =
-      TextEditingController(text: isEdit ? myPassword.description : '');
+      TextEditingController(text: isEdit ? myPassword!.description : '');
   final passwordProvider =
       Provider.of<PasswordProvider>(context, listen: false);
-  // ignore: avoid_bool_literals_in_conditional_expressions
+  var lang = S.of(context);
 
   return Alert(
           context: context,
-          title: isEdit ? 'Edit Password' : 'Add New Password',
+          title: isEdit ? lang.editPassword : lang.createPassword,
           content: Column(
             children: <Widget>[
               TextFormField(
                 controller: nameController,
                 decoration: InputDecoration(
                   icon: Icon(Icons.text_format),
-                  labelText: 'Password name',
+                  labelText: lang.passwordName,
                 ),
               ),
               TextFormField(
-                // initialValue: isEdit ? myPassword.password : '',
                 controller: passwordController,
                 decoration: InputDecoration(
                   icon: Icon(Icons.lock),
-                  labelText: 'Password',
+                  labelText: lang.password,
                 ),
               ),
               TextFormField(
-                // initialValue: isEdit ? myPassword.description : '',
                 controller: descriptionController,
                 decoration: InputDecoration(
                   icon: Icon(Icons.description),
-                  labelText: 'Description',
+                  labelText: lang.description,
                 ),
               ),
             ],
@@ -51,7 +55,7 @@ Future<bool?> passwordPopUp(BuildContext context, {Password? myPassword}) {
               onPressed: () {
                 if (isEdit) {
                   passwordProvider.editPassword(
-                      myPassword.id!,
+                      myPassword!.id!,
                       nameController.text,
                       passwordController.text,
                       descriptionController.text);
@@ -62,7 +66,7 @@ Future<bool?> passwordPopUp(BuildContext context, {Password? myPassword}) {
                 Navigator.pop(context);
               },
               child: Text(
-                'Create',
+                isEdit ? lang.edit : lang.create,
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),

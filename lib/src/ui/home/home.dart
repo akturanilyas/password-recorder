@@ -4,6 +4,7 @@ import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/widget/password_popup.dart';
 import 'package:password_saver/src/widget/password_tile.dart';
 import 'package:provider/provider.dart';
+import 'package:password_saver/generated/l10n.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
         Provider.of<PasswordProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Passwords'),
+        title: Text(S.of(context).myPassword),
         centerTitle: true,
         actions: <Widget>[
           IconButton(

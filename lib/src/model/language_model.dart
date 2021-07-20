@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:password_saver/src/model/password_model.dart';
 
 part 'language_model.g.dart';
 

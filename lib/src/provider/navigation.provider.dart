@@ -5,7 +5,7 @@ import 'package:password_saver/src/ui/auth/welcome_page.dart';
 import 'package:password_saver/src/ui/not_found/not_found.dart';
 import 'package:password_saver/src/ui/root.dart';
 import 'package:password_saver/src/ui/setting/language.dart';
-import 'package:password_saver/src/ui/setting/setting.dart';
+import 'package:password_saver/src/ui/setting/settings.dart';
 
 class NavigationProvider with ChangeNotifier {
   static Route<dynamic> generateRoute(RouteSettings settings) {

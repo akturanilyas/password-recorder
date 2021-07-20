@@ -15,17 +15,24 @@ class LanguagePage extends StatefulWidget {
 }
 
 class _LanguagePageState extends State<LanguagePage> {
+  ScrollController languageController = ScrollController();
+
+  @override
+  void dispose() {
+    languageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    ScrollController languageController = ScrollController();
     return Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).selectLanguage),
         ),
-        body: newMethod(languageController, languageController));
+        body: selectLanguageWidget(languageController, languageController));
   }
 
-  ClickableListWheelScrollView newMethod(
+  ClickableListWheelScrollView selectLanguageWidget(
     ScrollController languageController,
     ScrollController scrollController,
   ) {
@@ -38,19 +45,17 @@ class _LanguagePageState extends State<LanguagePage> {
 
     final _scrollController = FixedExtentScrollController(
         initialItem: getLanguageIndex(languageConstant, preferences.lang));
-    const double _itemHeight = 60;
-    const int _itemCount = 100;
 
     return ClickableListWheelScrollView(
       scrollController: _scrollController,
-      itemHeight: _itemHeight,
-      itemCount: _itemCount,
+      itemHeight: 60,
+      itemCount: languageConstant.length,
       onItemTapCallback: (index) {
         // ignore: avoid_print
       },
       child: ListWheelScrollView.useDelegate(
         controller: _scrollController,
-        itemExtent: _itemHeight,
+        itemExtent: 60,
         physics: FixedExtentScrollPhysics(),
         overAndUnderCenterOpacity: 0.5,
         perspective: 0.002,

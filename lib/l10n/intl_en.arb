@@ -1,4 +1,15 @@
 {
   "welcomeText":"Welcome",
-  "selectLanguage":"Select Language"
+  "selectLanguage":"Select Language",
+  "myPassword": "My Password",
+  "passwordName": "Password Name",
+  "password":"Password",
+  "description":"Description",
+  "create":"Create",
+  "editPassword":"Edit Password",
+  "createPassword":"Create Password",
+  "delete":"Delete",
+  "edit": "Edit",
+  "exit": "Exit",
+  "language":"Language"
 }

@@ -21,6 +21,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "create": MessageLookupByLibrary.simpleMessage("Oluştur"),
+        "createPassword": MessageLookupByLibrary.simpleMessage("Şifre Oluştur"),
+        "delete": MessageLookupByLibrary.simpleMessage("Sil"),
+        "description": MessageLookupByLibrary.simpleMessage("Açıklama"),
+        "edit": MessageLookupByLibrary.simpleMessage("Düzenle"),
+        "editPassword": MessageLookupByLibrary.simpleMessage("Şifre Düzenle"),
+        "exit": MessageLookupByLibrary.simpleMessage("Çıkış"),
+        "language": MessageLookupByLibrary.simpleMessage("Dil"),
+        "myPassword": MessageLookupByLibrary.simpleMessage("Şifrelerim"),
+        "password": MessageLookupByLibrary.simpleMessage("Şifre"),
+        "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil seçiniz"),
         "welcomeText": MessageLookupByLibrary.simpleMessage("hosgeldin")
       };

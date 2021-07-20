@@ -69,6 +69,116 @@ class S {
       args: [],
     );
   }
+
+  /// `My Password`
+  String get myPassword {
+    return Intl.message(
+      'My Password',
+      name: 'myPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password Name`
+  String get passwordName {
+    return Intl.message(
+      'Password Name',
+      name: 'passwordName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Password`
+  String get editPassword {
+    return Intl.message(
+      'Edit Password',
+      name: 'editPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Password`
+  String get createPassword {
+    return Intl.message(
+      'Create Password',
+      name: 'createPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit`
+  String get exit {
+    return Intl.message(
+      'Exit',
+      name: 'exit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
