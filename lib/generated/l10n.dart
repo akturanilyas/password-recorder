@@ -60,11 +60,11 @@ class S {
     );
   }
 
-  /// `Another Text`
-  String get anotherText {
+  /// `Select Language`
+  String get selectLanguage {
     return Intl.message(
-      'Another Text',
-      name: 'anotherText',
+      'Select Language',
+      name: 'selectLanguage',
       desc: '',
       args: [],
     );

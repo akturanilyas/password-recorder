@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
+import 'package:password_saver/src/provider/preferences_provider.dart';
 import 'package:password_saver/src/ui/loading/loading.dart';
 import 'package:provider/provider.dart';
 import 'auth/welcome_page.dart';
@@ -17,6 +18,7 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     Provider.of<AuthProvider>(context, listen: false).setLoggedIn();
+    Provider.of<PreferencesProvider>(context, listen: false).getPreferences();
     super.initState();
   }
 
