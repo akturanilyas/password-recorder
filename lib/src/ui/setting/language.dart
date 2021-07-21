@@ -25,9 +25,15 @@ class _LanguagePageState extends State<LanguagePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme =
+        Provider.of<PreferencesProvider>(context, listen: true).getTheme();
     return Scaffold(
         appBar: AppBar(
-          title: Text(S.of(context).selectLanguage),
+          centerTitle: true,
+          title: Text(
+            S.of(context).selectLanguage,
+            style: theme.textTheme.bodyText1,
+          ),
         ),
         body: selectLanguageWidget(languageController, languageController));
   }

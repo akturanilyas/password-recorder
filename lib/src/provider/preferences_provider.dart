@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_saver/src/constant/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesProvider with ChangeNotifier {
@@ -23,10 +24,10 @@ class PreferencesProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> changeTheme(bool value) async {
+  Future<void> changeTheme({required bool value}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _isDarkTheme = value;
-    _themeData = _isDarkTheme ? ThemeData.dark() : ThemeData.light();
+    _themeData = _isDarkTheme ? MyTheme.darkTheme : MyTheme.lightTheme;
     prefs.setBool('isDarkTheme', _isDarkTheme);
     notifyListeners();
   }
@@ -34,8 +35,7 @@ class PreferencesProvider with ChangeNotifier {
   Future<void> getPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _isDarkTheme = prefs.getBool('isDarkTheme') ?? false;
-    _themeData = _isDarkTheme ? ThemeData.dark() : ThemeData.light();
-
+    _themeData = _isDarkTheme ? MyTheme.darkTheme : MyTheme.lightTheme;
     _lang = prefs.getString('language') ?? 'en';
     changeLocale(prefs.getString('language') ?? 'en');
     notifyListeners();

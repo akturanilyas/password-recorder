@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:password_saver/src/model/password_model.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
+import 'package:password_saver/src/provider/preferences_provider.dart';
 import 'package:password_saver/src/widget/password_popup.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -10,6 +11,8 @@ import 'package:password_saver/generated/l10n.dart';
 
 Slidable passwordTile(Password myPassword, BuildContext context) {
   final passwordProvider = Provider.of<PasswordProvider>(context, listen: true);
+  final theme =
+      Provider.of<PreferencesProvider>(context, listen: true).getTheme();
   var lang = S.of(context);
   return Slidable(
     actionPane: SlidableDrawerActionPane(),
@@ -31,33 +34,33 @@ Slidable passwordTile(Password myPassword, BuildContext context) {
         onTap: () => {passwordProvider.deletePassword(myPassword.id!)},
       ),
     ],
-    child: Container(
-      color: Colors.white,
-      child: ListTile(
-        onTap: () => {
-          Alert(
-              context: context,
-              title: myPassword.name!,
-              content: Column(
-                children: [
-                  //_formField(Icons.lock, myPassword.password!),
-                  _formField(Icons.lock, myPassword.password!),
-                  _formField(Icons.description, myPassword.description!)
-                ],
-              ),
-              buttons: [
-                DialogButton(
-                  onPressed: null,
-                  child: Text(
-                    'Create',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                )
-              ]).show()
-        },
-        title: Text(myPassword.name!),
-        subtitle: Text(myPassword.description!),
+    child: ListTile(
+      onTap: () => {
+        Alert(
+            context: context,
+            title: myPassword.name!,
+            content: Column(
+              children: [
+                //_formField(Icons.lock, myPassword.password!),
+                _formField(Icons.lock, myPassword.password!),
+                _formField(Icons.description, myPassword.description!)
+              ],
+            ),
+            buttons: [
+              DialogButton(
+                onPressed: null,
+                child: Text(
+                  'Create',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              )
+            ]).show()
+      },
+      title: Text(
+        myPassword.name!,
+        style: theme.textTheme.bodyText1,
       ),
+      subtitle: Text(myPassword.description!, style: theme.textTheme.bodyText2),
     ),
   );
 }

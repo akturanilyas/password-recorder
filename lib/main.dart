@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:password_saver/generated/l10n.dart';
+import 'package:password_saver/src/constant/theme.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
 import 'package:password_saver/src/provider/navigation.provider.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
@@ -25,7 +26,7 @@ class _MyApp extends StatelessWidget {
       ],
       child: ChangeNotifierProvider<PreferencesProvider>(
         create: (context) =>
-            PreferencesProvider(ThemeData.light(), Locale('en'), 'en', false),
+            PreferencesProvider(MyTheme.lightTheme, Locale('en'), 'en', false),
         child: Builder(
           builder: (context) => _materialAppWithTheme(context),
         ),

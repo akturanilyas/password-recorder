@@ -23,10 +23,11 @@ class SettingsPage extends StatelessWidget {
 
           ListTile(
             tileColor: Colors.blue,
-            leading: CupertinoSwitch(
+            leading: Icon(Icons.dark_mode),
+            trailing: CupertinoSwitch(
               value: pref.getIsDarkTheme(),
               onChanged: (value) {
-                pref.changeTheme(value);
+                pref.changeTheme(value: value);
               },
             ),
             title: Text(
