@@ -11,5 +11,6 @@
   "delete":"Delete",
   "edit": "Edit",
   "exit": "Exit",
-  "language":"Language"
+  "language":"Language",
+  "theme": "Dark Theme"
 }

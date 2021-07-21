@@ -24,28 +24,32 @@ class _MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => PasswordProvider()),
       ],
       child: ChangeNotifierProvider<PreferencesProvider>(
-        create: (context) => PreferencesProvider(),
+        create: (context) =>
+            PreferencesProvider(ThemeData.light(), Locale('en'), 'en', false),
         child: Builder(
-          builder: (context) => MaterialApp(
-            locale: Provider.of<PreferencesProvider>(context, listen: true)
-                .currentLocale,
-            localizationsDelegates: [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            initialRoute: '/',
-            onGenerateRoute: NavigationProvider.generateRoute,
-            home: const Root(),
-          ),
+          builder: (context) => _materialAppWithTheme(context),
         ),
       ),
+    );
+  }
+
+  MaterialApp _materialAppWithTheme(BuildContext context) {
+    final pref = Provider.of<PreferencesProvider>(context);
+    return MaterialApp(
+      locale:
+          Provider.of<PreferencesProvider>(context, listen: true).currentLocale,
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      title: 'Flutter Demo',
+      theme: pref.getTheme(),
+      initialRoute: '/',
+      onGenerateRoute: NavigationProvider.generateRoute,
+      home: const Root(),
     );
   }
 }

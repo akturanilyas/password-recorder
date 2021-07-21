@@ -27,6 +27,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
+  flutter_statusbarcolor: any
   dio: ^4.0.0
   intl_utils: ^2.3.0
   json_serializable: ^4.1.3
