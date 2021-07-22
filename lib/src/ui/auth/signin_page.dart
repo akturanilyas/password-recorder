@@ -26,8 +26,10 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(top: 10, bottom: 10),
               child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
             ),
-            Text('Back',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
+            Text(
+              'Back',
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            )
           ],
         ),
       ),
@@ -105,12 +107,13 @@ class _LoginPageState extends State<LoginPage> {
             height: 10,
           ),
           TextField(
-              onChanged: (value) => {validationProvider.setPassword(value)},
-              obscureText: true,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
-                  filled: true))
+            onChanged: (value) => {validationProvider.setPassword(value)},
+            obscureText: true,
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                fillColor: Color(0xfff3f3f4),
+                filled: true),
+          )
         ],
       ),
     );
@@ -138,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Register',
               style: TextStyle(
-                  color: Color(0xff07489c),
+                  color: Colors.red[800],
                   fontSize: 13,
                   fontWeight: FontWeight.w600),
             ),
@@ -190,16 +193,8 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.symmetric(vertical: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: Colors.grey.shade200,
-                  offset: Offset(2, 4),
-                  blurRadius: 5,
-                  spreadRadius: 2)
-            ],
-            gradient:
-                LinearGradient(colors: [Color(0xff07489c), Color(0xff1F66DE)])),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+            color: Colors.green[700]),
         child: Text(
           'Login',
           style: TextStyle(fontSize: 20, color: Colors.white),
@@ -212,14 +207,17 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: SizedBox(
+        body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xff515BB2), Color(0xFF113880)],
+        ),
+      ),
       height: height,
       child: Stack(
         children: <Widget>[
-          Positioned(
-              top: -height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer()),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
@@ -232,15 +230,6 @@ class _LoginPageState extends State<LoginPage> {
                   _emailPasswordWidget(),
                   SizedBox(height: 20),
                   _submitButton(),
-                  // TODO: Add forget password button
-                  // Container(
-                  //   padding: EdgeInsets.symmetric(vertical: 10),
-                  //   alignment: Alignment.centerRight,
-                  //   child: Text('Forgot Password ?',
-                  //       style: TextStyle(
-                  //           fontSize: 14, fontWeight: FontWeight.w500)),
-                  // ),
-                  // _divider(),
                   SizedBox(height: height * .055),
                   _createAccountLabel(),
                 ],

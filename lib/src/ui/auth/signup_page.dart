@@ -136,16 +136,8 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: EdgeInsets.symmetric(vertical: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: Colors.grey.shade200,
-                  offset: Offset(2, 4),
-                  blurRadius: 5,
-                  spreadRadius: 2)
-            ],
-            gradient:
-                LinearGradient(colors: [Color(0xff07489c), Color(0xff1F66DE)])),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+            color: Colors.green[700]),
         child: Text(
           'Register Now',
           style: TextStyle(fontSize: 20, color: Colors.white),
@@ -176,7 +168,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Text(
               'Login',
               style: TextStyle(
-                  color: Color(0xfff79c4f),
+                  color: Colors.red[800],
                   fontSize: 13,
                   fontWeight: FontWeight.w600),
             ),
@@ -238,15 +230,17 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xff515BB2), Color(0xFF113880)],
+          ),
+        ),
         height: height,
         child: Stack(
           children: <Widget>[
-            Positioned(
-              top: -MediaQuery.of(context).size.height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer(),
-            ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: SingleChildScrollView(

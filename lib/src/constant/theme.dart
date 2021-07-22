@@ -28,10 +28,8 @@ class MyTheme {
     canvasColor: Color(0xff515BB2),
     accentColor: Color(0xff457BE0),
     accentColorBrightness: Brightness.light,
-    //todo Scaffold
     scaffoldBackgroundColor: Color(0xffDBE9F7),
     bottomAppBarColor: Color(0xff6D42CE),
-    // TODO CARD COLOR
     cardColor: Color(0xff515BB2),
     dividerColor: Color(0x1f6D42CE),
     focusColor: Color(0x1aF5E0C3),
