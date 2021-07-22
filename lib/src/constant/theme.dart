@@ -53,7 +53,7 @@ class MyTheme {
     // buttonColor: Color(0xff936F3E),
     // secondaryHeaderColor: Colors.grey,
     // backgroundColor: Color(0xff457BE0),
-    // dialogBackgroundColor: Colors.white,
+    dialogBackgroundColor: Color(0xff515BB2),
     // indicatorColor: Color(0xff457BE0),
     // hintColor: Colors.grey,
     // errorColor: Colors.red,
@@ -147,9 +147,17 @@ class MyTheme {
     // snackBarTheme: SnackBarThemeData(
     //     // snack bar theme
     //     ),
-    // dialogTheme: DialogTheme(
-    //     // dialog theme
-    //     ),
+    dialogTheme: DialogTheme(
+      contentTextStyle: TextStyle(
+        color: Color(0xFF0A4DD1),
+      ),
+      titleTextStyle: TextStyle(
+        fontSize: 26,
+        color: Color(0xffDBE9F7),
+      ),
+
+      // dialog theme
+    ),
     // floatingActionButtonTheme: FloatingActionButtonThemeData(
     //     // floating action button theme
     //     ),

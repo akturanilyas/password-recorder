@@ -19,7 +19,7 @@ Slidable passwordTile(Password myPassword, BuildContext context) {
     actions: <Widget>[
       IconSlideAction(
         caption: lang.edit,
-        color: Colors.indigo,
+        color: Colors.yellow,
         icon: Icons.edit,
         onTap: () {
           passwordPopUp(context, myPassword: myPassword);
@@ -34,38 +34,40 @@ Slidable passwordTile(Password myPassword, BuildContext context) {
         onTap: () => {passwordProvider.deletePassword(myPassword.id!)},
       ),
     ],
-    child: ListTile(
-      onTap: () => {
-        Alert(
+    child: ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+      child: ListTile(
+        onTap: () => {
+          Alert(
+            style: AlertStyle(
+              titleStyle: theme.dialogTheme.titleTextStyle!,
+              isButtonVisible: false,
+            ),
+            closeIcon: Icon(Icons.close, color: theme.primaryColor),
             context: context,
             title: myPassword.name!,
             content: Column(
               children: [
+                //todo add another field
                 //_formField(Icons.lock, myPassword.password!),
-                _formField(Icons.lock, myPassword.password!),
-                _formField(Icons.description, myPassword.description!)
+                _formField(Icons.lock, myPassword.password!, theme),
+                _formField(Icons.description, myPassword.description!, theme)
               ],
             ),
-            buttons: [
-              DialogButton(
-                onPressed: null,
-                child: Text(
-                  'Create',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              )
-            ]).show()
-      },
-      title: Text(
-        myPassword.name!,
-        style: theme.textTheme.bodyText1,
+          ).show()
+        },
+        title: Text(
+          myPassword.name!,
+          style: theme.textTheme.bodyText1,
+        ),
+        subtitle:
+            Text(myPassword.description!, style: theme.textTheme.bodyText2),
       ),
-      subtitle: Text(myPassword.description!, style: theme.textTheme.bodyText2),
     ),
   );
 }
 
-Row _formField(IconData icon, String text) {
+Row _formField(IconData icon, String text, ThemeData theme) {
   return Row(
     children: [
       Expanded(
@@ -75,6 +77,7 @@ Row _formField(IconData icon, String text) {
           enabled: false,
           minLines: 1,
           maxLines: 3,
+          style: theme.textTheme.bodyText2,
           decoration: InputDecoration(
             fillColor: Colors.white,
             border: InputBorder.none,
@@ -88,7 +91,7 @@ Row _formField(IconData icon, String text) {
           Clipboard.setData(ClipboardData(text: text));
         },
         icon: Icon(Icons.copy),
-        color: Colors.blue,
+        color: theme.primaryColor,
       ),
     ],
   );

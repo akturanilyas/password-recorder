@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/provider/preferences_provider.dart';
-import 'package:password_saver/src/widget/password_popup.dart';
+
 import 'package:password_saver/src/widget/password_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:password_saver/generated/l10n.dart';
@@ -25,12 +25,10 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final passwordProvider =
-        Provider.of<PasswordProvider>(context, listen: true);
     var theme =
         Provider.of<PreferencesProvider>(context, listen: true).getTheme();
     List<Widget> pages = [
-      MyPassword(passwordProvider, context),
+      MyPassword(),
       AddPassword(),
     ];
     return Scaffold(
@@ -70,10 +68,6 @@ class _HomeState extends State<Home> {
 }
 
 class MyPassword extends StatefulWidget {
-  const MyPassword(PasswordProvider passwordProvider, BuildContext context,
-      {Key? key})
-      : super(key: key);
-
   @override
   _MyPasswordState createState() => _MyPasswordState();
 }
@@ -107,11 +101,17 @@ class _MyPasswordState extends State<MyPassword> {
     return ListView.builder(
       itemCount: myPasswords.length,
       itemBuilder: (BuildContext context, int index) {
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30.0),
           ),
-          child: passwordTile(myPasswords[index], context),
+          child: Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: passwordTile(myPasswords[index], context),
+          ),
         );
       },
     );
@@ -119,18 +119,16 @@ class _MyPasswordState extends State<MyPassword> {
 }
 
 class AddPassword extends StatefulWidget {
-  const AddPassword({Key? key}) : super(key: key);
-
   @override
   _AddPasswordState createState() => _AddPasswordState();
 }
 
 class _AddPasswordState extends State<AddPassword> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController descriptionController = TextEditingController();
     final passwordProvider =
         Provider.of<PasswordProvider>(context, listen: true);
     var lang = S.of(context);
@@ -141,15 +139,15 @@ class _AddPasswordState extends State<AddPassword> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _form(nameController, lang, passwordController, descriptionController,
-              theme),
-          _createButton(context, theme, lang)
+          _form(lang, theme),
+          _createButton(context, theme, lang, passwordProvider)
         ],
       ),
     );
   }
 
-  TextButton _createButton(BuildContext context, ThemeData theme, S lang) {
+  TextButton _createButton(BuildContext context, ThemeData theme, S lang,
+      PasswordProvider passwordProvider) {
     return TextButton(
       style: TextButton.styleFrom(
           fixedSize: Size(MediaQuery.of(context).size.width,
@@ -158,7 +156,10 @@ class _AddPasswordState extends State<AddPassword> {
           backgroundColor: theme.canvasColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(32)))),
-      onPressed: () {},
+      onPressed: () {
+        passwordProvider.createPassword(nameController.value.text,
+            passwordController.value.text, descriptionController.value.text);
+      },
       child: Text(
         lang.create,
         style: theme.textTheme.bodyText1,
@@ -166,12 +167,7 @@ class _AddPasswordState extends State<AddPassword> {
     );
   }
 
-  Column _form(
-      TextEditingController nameController,
-      S lang,
-      TextEditingController passwordController,
-      TextEditingController descriptionController,
-      ThemeData theme) {
+  Column _form(S lang, ThemeData theme) {
     return Column(
       children: <Widget>[
         TextFormField(
