@@ -91,7 +91,7 @@ Row _formField(IconData icon, String text, ThemeData theme) {
           Clipboard.setData(ClipboardData(text: text));
         },
         icon: Icon(Icons.copy),
-        color: theme.primaryColor,
+        color: theme.colorScheme.secondary,
       ),
     ],
   );

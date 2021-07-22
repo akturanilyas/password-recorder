@@ -82,6 +82,8 @@ class _MyPasswordState extends State<MyPassword> {
   Widget build(BuildContext context) {
     final passwordProvider =
         Provider.of<PasswordProvider>(context, listen: true);
+    final theme =
+        Provider.of<PreferencesProvider>(context, listen: true).getTheme();
     return passwordProvider.isLoading
         ? Center(
             child: SizedBox(
@@ -89,7 +91,7 @@ class _MyPasswordState extends State<MyPassword> {
               child: Center(
                 child: LoadingIndicator(
                   indicatorType: Indicator.orbit,
-                  color: Colors.blue,
+                  color: theme.colorScheme.primary,
                 ),
               ),
             ),
@@ -201,7 +203,7 @@ class _AddPasswordState extends State<AddPassword> {
         ),
         TextFormField(
           style: theme.textTheme.headline1,
-          cursorColor: theme.canvasColor,
+          cursorColor: theme.textTheme.headline1!.color,
           controller: descriptionController,
           decoration: InputDecoration(
             icon: Icon(

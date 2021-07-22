@@ -30,12 +30,9 @@ class _RootState extends State<Root> {
         Provider.of<PreferencesProvider>(context, listen: true);
 
     if (authProvider.isLoading || preferencesProvider.isLoading) {
-      print(preferencesProvider.isLoading);
       return LoadingPage();
     } else if (authProvider.isLoggedIn) {
-      print(preferencesProvider.isLoading);
-      return NotFoundPage();
-      //return Home();
+      return Home();
     } else {
       return WelcomePage();
     }
