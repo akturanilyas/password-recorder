@@ -13,5 +13,6 @@
   "exit": "Exit",
   "language":"Language",
   "theme": "Dark Theme",
-  "settings":"Settings"
+  "settings":"Settings",
+  "account":"Account"
 }

@@ -42,9 +42,9 @@ class SettingsPage extends StatelessWidget {
         },
       ),
       ListTile(
-        leading: Icon(Icons.dark_mode, color: theme.primaryColor),
+        leading: Icon(Icons.account_circle, color: theme.primaryColor),
         title: Text(
-          lang.theme,
+          lang.account,
           style: TextStyle(color: Colors.white),
         ),
       ),

@@ -1,18 +1,30 @@
-# password_saver
+# Password Recorder
 
-A new Flutter project.
+This is a freelance project for me. I want to improve my **TypeScript** and **Flutter** skills.
+
+Now let's look at the project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Firstly if we want to use **Password Recorder** project we need to run [this](http://github.com/akturanilyas/password-recorder-api) project.
 
-A few resources to get you started if this is your first Flutter project:
+Now we can see screenshot in the application
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Welcome Page Screenshots
 
-[![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
+![Welcome Screen Gif](./assets/screenshots/welcome.gif)
+
+### Light Mode Screenshots
+
+![Light Mode Gif](./assets/screenshots/light.gif)
+
+### Dark Mode Screenshots
+
+![Dark Mode Gif](./assets/screenshots/dark.gif)
+
+## Lint
+
+i use [lint](<https://pub.dev/packages/lint>)
+ to improve code quality.
