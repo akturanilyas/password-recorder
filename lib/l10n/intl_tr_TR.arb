@@ -1,6 +1,6 @@
 {
   "welcomeText":"hosgeldin",
-  "selectLanguage":"Dil seçiniz",
+  "selectLanguage":"Dil Seçiniz",
   "myPassword":"Şifrelerim",
   "passwordName":"Şifre İsmi",
   "password":"Şifre",
@@ -12,5 +12,6 @@
   "edit": "Düzenle",
   "exit":"Çıkış",
   "language":"Dil",
-  "theme":"Koyu Tema"
+  "theme":"Koyu Tema",
+  "settings":"Ayarlar"
 }

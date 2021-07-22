@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/provider/preferences_provider.dart';
@@ -27,6 +28,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var theme =
         Provider.of<PreferencesProvider>(context, listen: true).getTheme();
+
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.red));
+
     List<Widget> pages = [
       MyPassword(),
       AddPassword(),
@@ -108,7 +113,7 @@ class _MyPasswordState extends State<MyPassword> {
           child: Card(
             elevation: 3,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             child: passwordTile(myPasswords[index], context),
           ),

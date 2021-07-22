@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "theme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "welcomeText": MessageLookupByLibrary.simpleMessage("Welcome")
       };

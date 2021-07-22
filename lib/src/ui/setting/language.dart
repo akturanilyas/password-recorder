@@ -56,32 +56,44 @@ class _LanguagePageState extends State<LanguagePage> {
       scrollController: _scrollController,
       itemHeight: 60,
       itemCount: languageConstant.length,
-      onItemTapCallback: (index) {
-        // ignore: avoid_print
-      },
+      onItemTapCallback: (index) {},
       child: ListWheelScrollView.useDelegate(
         controller: _scrollController,
         itemExtent: 60,
         physics: FixedExtentScrollPhysics(),
-        overAndUnderCenterOpacity: 0.5,
+        // overAndUnderCenterOpacity: 0.5,
         perspective: 0.002,
         onSelectedItemChanged: (index) {
           preferences.changeLocale(languageConstant[index].shortName);
+          preferences.setSelectedIndex(index);
         },
         childDelegate: ListWheelChildBuilderDelegate(
-          builder: (context, index) => _child(languageConstant[index]),
+          builder: (context, index) => _child(languageConstant[index],
+              preferences.selectedIndex == index ? true : false),
           childCount: languageConstant.length,
         ),
       ),
     );
   }
 
-  Widget _child(LanguageModel language) {
+  Widget _child(LanguageModel language, bool isSelected) {
     return SizedBox(
       height: 30,
-      child: ListTile(
-        title: Text(language.name),
-        leading: CircleAvatar(child: Text(language.shortName)),
+      child: Card(
+        color: isSelected ? Colors.red : null,
+        child: ListTile(
+          title: Text(
+            language.name,
+            style: TextStyle(color: Color(0xffDBE9F7)),
+          ),
+          leading: CircleAvatar(
+            backgroundColor: Color(0xffB5BFD3),
+            child: Text(
+              language.shortName,
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        ),
       ),
     );
   }

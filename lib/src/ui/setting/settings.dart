@@ -11,51 +11,79 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context, listen: true);
-    final pref = Provider.of<PreferencesProvider>(context, listen: true);
+    final authProvider = Provider.of<AuthProvider>(context);
+    final pref = Provider.of<PreferencesProvider>(context);
     final lang = S.of(context);
+    final theme = Provider.of<PreferencesProvider>(context).getTheme();
+
+    List<ListTile> tiles = [
+      ListTile(
+        leading: Icon(Icons.dark_mode, color: theme.primaryColor),
+        trailing: CupertinoSwitch(
+          trackColor: theme.primaryColor,
+          value: pref.getIsDarkTheme(),
+          onChanged: (value) {
+            pref.changeTheme(value: value);
+          },
+        ),
+        title: Text(
+          lang.theme,
+          style: TextStyle(color: theme.primaryColor),
+        ),
+      ),
+      ListTile(
+        leading: Icon(Icons.language_sharp, color: theme.primaryColor),
+        title: Text(
+          lang.language,
+          style: TextStyle(color: Colors.white),
+        ),
+        onTap: () async {
+          Navigator.pushNamed(context, '/language');
+        },
+      ),
+      ListTile(
+        leading: Icon(Icons.dark_mode, color: theme.primaryColor),
+        title: Text(
+          lang.theme,
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      ListTile(
+        leading: Icon(Icons.exit_to_app, color: theme.primaryColor),
+        title: Text(
+          lang.exit,
+          style: TextStyle(color: Colors.white),
+        ),
+        onTap: () async {
+          await authProvider.signOut();
+          Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+        },
+      ),
+    ];
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          // todo change architecture
-
-          ListTile(
-            tileColor: Colors.blue,
-            leading: Icon(Icons.dark_mode),
-            trailing: CupertinoSwitch(
-              value: pref.getIsDarkTheme(),
-              onChanged: (value) {
-                pref.changeTheme(value: value);
-              },
-            ),
-            title: Text(
-              lang.theme,
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          ListTile(
-            tileColor: Colors.blue,
-            leading: Icon(Icons.language_sharp),
-            title: Text(
-              lang.language,
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () async {
-              Navigator.pushNamed(context, '/language');
-            },
-          ),
-          ListTile(
-            tileColor: Colors.red,
-            leading: Icon(Icons.exit_to_app),
-            title: Text(lang.exit),
-            onTap: () async {
-              await authProvider.signOut();
-              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-            },
-          ),
-        ],
+      appBar: AppBar(
+        title: Text(
+          S.of(context).settings,
+          style: theme.textTheme.bodyText1,
+        ),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: tiles.length,
+          itemBuilder: (context, index) {
+            return Card(
+              color: index == 3 ? theme.errorColor : theme.canvasColor,
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: tiles[index],
+            );
+          },
+        ),
       ),
     );
   }

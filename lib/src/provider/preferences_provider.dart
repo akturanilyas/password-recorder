@@ -7,14 +7,16 @@ class PreferencesProvider with ChangeNotifier {
   Locale _currentLocale;
   String _lang;
   bool _isDarkTheme;
-  PreferencesProvider(
-      this._themeData, this._currentLocale, this._lang, this._isDarkTheme);
+  int _selectedIndex;
+  PreferencesProvider(this._themeData, this._currentLocale, this._lang,
+      this._isDarkTheme, this._selectedIndex);
 
   ThemeData getTheme() => _themeData;
   bool getIsDarkTheme() => _isDarkTheme;
+  int setSelectedIndex(int index) => _selectedIndex = index;
   Locale get currentLocale => _currentLocale;
   String get lang => _lang;
-
+  int get selectedIndex => _selectedIndex;
   // void setDefaultTheme() {
   //   _themeData = ThemeData.light();
   // }

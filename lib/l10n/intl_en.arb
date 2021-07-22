@@ -12,5 +12,6 @@
   "edit": "Edit",
   "exit": "Exit",
   "language":"Language",
-  "theme": "Dark Theme"
+  "theme": "Dark Theme",
+  "settings":"Settings"
 }

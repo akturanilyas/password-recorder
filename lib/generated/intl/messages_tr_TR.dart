@@ -32,7 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myPassword": MessageLookupByLibrary.simpleMessage("Şifrelerim"),
         "password": MessageLookupByLibrary.simpleMessage("Şifre"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),
-        "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil seçiniz"),
+        "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil Seçiniz"),
+        "settings": MessageLookupByLibrary.simpleMessage("Ayarlar"),
         "theme": MessageLookupByLibrary.simpleMessage("Koyu Tema"),
         "welcomeText": MessageLookupByLibrary.simpleMessage("hosgeldin")
       };
