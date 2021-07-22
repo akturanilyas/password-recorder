@@ -95,7 +95,7 @@ class _MyPasswordState extends State<MyPassword> {
             ),
           )
         : Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
             child: _passwordList(),
           );
   }
