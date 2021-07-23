@@ -26,5 +26,5 @@ Now we can see screenshot in the application
 
 ## Lint
 
-i use [lint](<https://pub.dev/packages/lint>)
+I use [lint](<https://pub.dev/packages/lint>)
  to improve code quality.
