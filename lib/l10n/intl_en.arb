@@ -14,5 +14,13 @@
   "language":"Language",
   "theme": "Dark Theme",
   "settings":"Settings",
-  "account":"Account"
+  "account":"Account",
+  "done": "Done",
+  "skip":"Skip",
+  "next":"Next",
+  "back":"Back",
+  "welcomeLang":"Please select preffered language",
+  "welcomeTheme":"Please select preffered color mode",
+  "welcomeDone":"Everything done, we can start",
+  "everythingDone": "Everything Done!"
 }

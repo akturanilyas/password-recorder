@@ -209,6 +209,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Done`
+  String get done {
+    return Intl.message(
+      'Done',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skip {
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select preffered language`
+  String get welcomeLang {
+    return Intl.message(
+      'Please select preffered language',
+      name: 'welcomeLang',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select preffered color mode`
+  String get welcomeTheme {
+    return Intl.message(
+      'Please select preffered color mode',
+      name: 'welcomeTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Everything done, we can start`
+  String get welcomeDone {
+    return Intl.message(
+      'Everything done, we can start',
+      name: 'welcomeDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Everything Done!`
+  String get everythingDone {
+    return Intl.message(
+      'Everything Done!',
+      name: 'everythingDone',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -48,17 +48,6 @@ class SettingsPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      ListTile(
-        leading: Icon(Icons.exit_to_app, color: theme.primaryColor),
-        title: Text(
-          lang.exit,
-          style: TextStyle(color: Colors.white),
-        ),
-        onTap: () async {
-          await authProvider.signOut();
-          Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-        },
-      ),
     ];
 
     return Scaffold(

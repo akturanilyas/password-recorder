@@ -15,59 +15,9 @@ class AuthProvider with ChangeNotifier {
   bool get isLoggedIn => _isLoggedIn;
   bool get isLoading => _isLoading;
 
-  Future<String> signIn(String email, String password) async {
-    SignInRequest request = SignInRequest(email, password);
-    UserRepository userRepository = UserRepository();
-    Response response = await userRepository.signIn(request);
+  void setLoggedIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    switch (response.statusCode) {
-      case 200:
-        _isLoggedIn = true;
-        prefs.setString('authorization', response.data['token'].toString());
-        notifyListeners();
-        return 'User successfuly login';
-      case 401:
-        return 'Wrong password';
-      case 404:
-        return 'User not found';
-      default:
-        return 'Unexpected error';
-    }
-  }
-
-  Future<String> signUp(String username, String email, String password) async {
-    SignUpRequest request = SignUpRequest(username, email, password);
-    UserRepository userRepository = UserRepository();
-    Response response = await userRepository.createUser(request);
-
-    switch (response.statusCode) {
-      case 201:
-        return 'User successfuly create';
-      case 409:
-        return 'User already exist';
-      default:
-        return 'Unexpected error';
-    }
-  }
-
-  Future<void> signOut() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('authorization', '');
-    await setLoggedIn();
-  }
-
-  Future<void> setLoggedIn() async {
-    _isLoading = true;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String? token = prefs.getString('authorization');
-
-    if (token == '' || token == null) {
-      _isLoggedIn = false;
-    } else {
-      _isLoggedIn = true;
-    }
-    _isLoading = false;
-    notifyListeners();
+    _isLoggedIn = true;
+    prefs.setBool('isLoggedIn', true);
   }
 }

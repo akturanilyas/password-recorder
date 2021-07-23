@@ -14,5 +14,13 @@
   "language":"Dil",
   "theme":"Koyu Tema",
   "settings":"Ayarlar",
-  "account":"Hesap"
+  "account":"Hesap",
+  "done": "Tamam",
+  "skip":"Geç",
+  "next":"İleri",
+  "back":"Geri",
+  "welcomeLang":"Lütfen tercih ettiğiniz bir dili seçiniz",
+  "welcomeTheme":"Lütfen tercih ettiğiniz renk modunu  seçiniz",
+  "welcomeDone":"Her şey tamam, artık başlayabiliriz",
+  "everythingDone": "Her şey tamam"
 }

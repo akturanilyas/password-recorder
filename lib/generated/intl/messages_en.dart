@@ -22,22 +22,34 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createPassword":
             MessageLookupByLibrary.simpleMessage("Create Password"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editPassword": MessageLookupByLibrary.simpleMessage("Edit Password"),
+        "everythingDone":
+            MessageLookupByLibrary.simpleMessage("Everything Done!"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "myPassword": MessageLookupByLibrary.simpleMessage("My Password"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "theme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
-        "welcomeText": MessageLookupByLibrary.simpleMessage("Welcome")
+        "welcomeDone": MessageLookupByLibrary.simpleMessage(
+            "Everything done, we can start"),
+        "welcomeLang": MessageLookupByLibrary.simpleMessage(
+            "Please select preffered language"),
+        "welcomeText": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "welcomeTheme": MessageLookupByLibrary.simpleMessage(
+            "Please select preffered color mode")
       };
 }

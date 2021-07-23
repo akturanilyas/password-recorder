@@ -22,20 +22,31 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Hesap"),
+        "back": MessageLookupByLibrary.simpleMessage("Geri"),
         "create": MessageLookupByLibrary.simpleMessage("Oluştur"),
         "createPassword": MessageLookupByLibrary.simpleMessage("Şifre Oluştur"),
         "delete": MessageLookupByLibrary.simpleMessage("Sil"),
         "description": MessageLookupByLibrary.simpleMessage("Açıklama"),
+        "done": MessageLookupByLibrary.simpleMessage("Tamam"),
         "edit": MessageLookupByLibrary.simpleMessage("Düzenle"),
         "editPassword": MessageLookupByLibrary.simpleMessage("Şifre Düzenle"),
+        "everythingDone": MessageLookupByLibrary.simpleMessage("Her şey tamam"),
         "exit": MessageLookupByLibrary.simpleMessage("Çıkış"),
         "language": MessageLookupByLibrary.simpleMessage("Dil"),
         "myPassword": MessageLookupByLibrary.simpleMessage("Şifrelerim"),
+        "next": MessageLookupByLibrary.simpleMessage("İleri"),
         "password": MessageLookupByLibrary.simpleMessage("Şifre"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil Seçiniz"),
         "settings": MessageLookupByLibrary.simpleMessage("Ayarlar"),
+        "skip": MessageLookupByLibrary.simpleMessage("Geç"),
         "theme": MessageLookupByLibrary.simpleMessage("Koyu Tema"),
-        "welcomeText": MessageLookupByLibrary.simpleMessage("hosgeldin")
+        "welcomeDone": MessageLookupByLibrary.simpleMessage(
+            "Her şey tamam, artık başlayabiliriz"),
+        "welcomeLang": MessageLookupByLibrary.simpleMessage(
+            "Lütfen tercih ettiğiniz bir dili seçiniz"),
+        "welcomeText": MessageLookupByLibrary.simpleMessage("hosgeldin"),
+        "welcomeTheme": MessageLookupByLibrary.simpleMessage(
+            "Lütfen tercih ettiğiniz renk modunu  seçiniz")
       };
 }

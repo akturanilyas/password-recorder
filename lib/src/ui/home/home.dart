@@ -90,7 +90,7 @@ class _MyPasswordState extends State<MyPassword> {
               height: MediaQuery.of(context).size.height * .1,
               child: Center(
                 child: LoadingIndicator(
-                  indicatorType: Indicator.orbit,
+                  indicatorType: Indicator.circleStrokeSpin,
                   color: theme.colorScheme.primary,
                 ),
               ),
