@@ -18,7 +18,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   @override
   void initState() {
-    Provider.of<AuthProvider>(context, listen: false).setLoggedIn();
+    Provider.of<AuthProvider>(context, listen: false).setStatus();
     Provider.of<PreferencesProvider>(context, listen: false).getPreferences();
     super.initState();
   }

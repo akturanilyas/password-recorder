@@ -33,6 +33,7 @@ class PreferencesProvider with ChangeNotifier {
   Future<void> getPreferences() async {
     _isLoading = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    
     _isDarkTheme = prefs.getBool('isDarkTheme') ?? false;
     _themeData = _isDarkTheme ? MyTheme.darkTheme : MyTheme.lightTheme;
     _lang = prefs.getString('language') ?? 'en';

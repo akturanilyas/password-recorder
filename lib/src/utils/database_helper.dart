@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:password_saver/src/model/password_model.dart';
+import 'package:password_saver/src/model/request/edit_password_request_model.dart';
 import 'package:password_saver/src/model/request/password_request_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -69,5 +70,16 @@ class DBProvider {
     List<Password> list =
         res.isNotEmpty ? res.map((c) => Password.fromMap(c)).toList() : [];
     return list;
+  }
+  Future <int>updatePassword(EditPasswordRequest editedPassword) async {
+    final db = await database;
+    var res = await db!.update('Password', editedPassword.toMap(),
+        where: 'id = ?', whereArgs: [editedPassword.id]);
+    return res;
+  }
+
+  Future<void> deletePassword(String id) async {
+    final db = await database;
+    db!.delete('Password', where: 'id = ?', whereArgs: [id]);
   }
 }

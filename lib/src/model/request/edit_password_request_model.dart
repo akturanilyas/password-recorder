@@ -18,4 +18,13 @@ class EditPasswordRequest {
 
   factory EditPasswordRequest.fromJson(Map<String, dynamic> json) =>
       _$EditPasswordRequestFromJson(json);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'password': password,
+    };
+  }
 }

@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Everything Done!"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
-        "myPassword": MessageLookupByLibrary.simpleMessage("My Password"),
+        "myPassword": MessageLookupByLibrary.simpleMessage("My Passwords"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),

@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `My Password`
+  /// `My Passwords`
   String get myPassword {
     return Intl.message(
-      'My Password',
+      'My Passwords',
       name: 'myPassword',
       desc: '',
       args: [],

@@ -15,7 +15,7 @@ class PasswordProvider with ChangeNotifier {
   Future<void> getMyPasswords() async {
     _isLoading = true;
     _myPasswords = await db.getAllPassword();
-    // TODO Get all password
+
     _isLoading = false;
     notifyListeners();
   }
@@ -36,7 +36,7 @@ class PasswordProvider with ChangeNotifier {
     EditPasswordRequest request =
         EditPasswordRequest(id, name, password, description);
     // TODO Update password
-
+    await db.updatePassword(request);
     getMyPasswords();
     notifyListeners();
     return 'text';
@@ -45,9 +45,11 @@ class PasswordProvider with ChangeNotifier {
   Future<String> deletePassword(String id) async {
     // TODO delete password
 
+    db.deletePassword(id);
+    myPasswords.removeWhere((password) => id == password.id ? true : false);
+    notifyListeners();
     // if (status == true) {
     //   // ignore: avoid_bool_literals_in_conditional_expressions
-    //   myPasswords.removeWhere((password) => id == password.id ? true : false);
     //   notifyListeners();
     //   return 'Password succesfully deleted';
     // }

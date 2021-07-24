@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:password_saver/src/model/request/signin_request_model.dart';
-import 'package:password_saver/src/model/request/signup_request_model.dart';
 import 'package:password_saver/src/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,9 +11,29 @@ class AuthProvider with ChangeNotifier {
   bool get isLoggedIn => _isLoggedIn;
   bool get isLoading => _isLoading;
 
-  void setLoggedIn() async {
+  Future<void> setStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getBool('isLoggedIn') == true) {
+      _isLoggedIn = true;
+      prefs.setBool('isLoggedIn', true);
+    }
+  }
+
+  Future<void> setLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     _isLoggedIn = true;
     prefs.setBool('isLoggedIn', true);
+
+    notifyListeners();
+  }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', false);
+    print(prefs.getBool('isLoggedIn'));
+    _isLoggedIn = false;
+    notifyListeners();
   }
 }
