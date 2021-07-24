@@ -16,4 +16,12 @@ class PasswordRequest {
 
   factory PasswordRequest.fromJson(Map<String, dynamic> json) =>
       _$PasswordRequestFromJson(json);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'description': description,
+      'password': password,
+    };
+  }
 }

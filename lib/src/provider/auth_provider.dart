@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:password_saver/src/model/request/signin_request_model.dart';
 import 'package:password_saver/src/model/request/signup_request_model.dart';
 import 'package:password_saver/src/model/user_model.dart';
-import 'package:password_saver/src/repository/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {

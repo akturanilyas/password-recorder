@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:password_saver/src/model/password_model.dart';
 import 'package:password_saver/src/model/request/edit_password_request_model.dart';
 import 'package:password_saver/src/model/request/password_request_model.dart';
-import 'package:password_saver/src/repository/password_repository.dart';
+import 'package:password_saver/src/utils/database_helper.dart';
 
 class PasswordProvider with ChangeNotifier {
   List<Password> _myPasswords = [];
-  PasswordRepository passwordRepository = PasswordRepository();
   bool _isLoading = false;
+  DBProvider db = DBProvider();
 
   List<Password> get myPasswords => _myPasswords;
   bool get isLoading => _isLoading;
 
   Future<void> getMyPasswords() async {
     _isLoading = true;
-    _myPasswords = await passwordRepository.getAllPassword();
+    _myPasswords = await db.getAllPassword();
+    // TODO Get all password
     _isLoading = false;
     notifyListeners();
   }
@@ -23,7 +24,8 @@ class PasswordProvider with ChangeNotifier {
       String name, String password, String description) async {
     PasswordRequest request = PasswordRequest(name, password, description);
 
-    await passwordRepository.createPassword(request);
+    await db.createPassword(request);
+    // TODO Create Password
     //todo Add: Handler
     getMyPasswords();
     return 'text';
@@ -33,7 +35,7 @@ class PasswordProvider with ChangeNotifier {
       String id, String name, String password, String description) async {
     EditPasswordRequest request =
         EditPasswordRequest(id, name, password, description);
-    await passwordRepository.editPassword(request);
+    // TODO Update password
 
     getMyPasswords();
     notifyListeners();
@@ -41,14 +43,14 @@ class PasswordProvider with ChangeNotifier {
   }
 
   Future<String> deletePassword(String id) async {
-    bool status = await passwordRepository.deletePassword(id);
+    // TODO delete password
 
-    if (status == true) {
-      // ignore: avoid_bool_literals_in_conditional_expressions
-      myPasswords.removeWhere((password) => id == password.id ? true : false);
-      notifyListeners();
-      return 'Password succesfully deleted';
-    }
+    // if (status == true) {
+    //   // ignore: avoid_bool_literals_in_conditional_expressions
+    //   myPasswords.removeWhere((password) => id == password.id ? true : false);
+    //   notifyListeners();
+    //   return 'Password succesfully deleted';
+    // }
     return "Password can't be deleted.";
   }
 }
