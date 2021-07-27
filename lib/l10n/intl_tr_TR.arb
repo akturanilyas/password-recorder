@@ -22,5 +22,8 @@
   "welcomeLang":"Lütfen tercih ettiğiniz bir dili seçiniz",
   "welcomeTheme":"Lütfen tercih ettiğiniz renk modunu  seçiniz",
   "welcomeDone":"Her şey tamam, artık başlayabiliriz",
-  "everythingDone": "Her şey tamam"
+  "everythingDone": "Her şey tamam",
+  "selectTheme":"selectTheme",
+  "enterPassword":"Lütfen şifrenizi giriniz",
+  "appPassword":"Lütfen şifrenizi doğrulayın"
 }

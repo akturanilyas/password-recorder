@@ -42,7 +42,7 @@ class _WelcomePageState extends State<WelcomePage> {
         body: Text(lang.welcomeTheme),
         mainImage: themeSelection(theme, preferences, lang),
         title: Text(
-          lang.selectLanguage,
+          lang.welcomeTheme,
         ),
         titleTextStyle: TextStyle(fontSize: 30),
         bubble: Icon(Icons.dark_mode),
@@ -52,13 +52,7 @@ class _WelcomePageState extends State<WelcomePage> {
         pageColor: theme.colorScheme.primary,
         bubble: Icon(Icons.done),
         body: Text(lang.welcomeDone),
-        mainImage: CircleAvatar(
-          backgroundColor: theme.primaryColor,
-          child: Icon(
-            Icons.done,
-            color: theme.colorScheme.primary,
-          ),
-        ),
+        mainImage: test(theme),
         titleTextStyle: TextStyle(fontSize: 30),
         title: Text('${lang.everythingDone}!'),
         bodyTextStyle: TextStyle(fontFamily: 'Georgia', color: Colors.white),
@@ -66,11 +60,13 @@ class _WelcomePageState extends State<WelcomePage> {
     ];
     return IntroViewsFlutter(
       pages,
+      fullTransition: 200,
       onTapDoneButton: () {
-        auth.setLoggedIn();
+        auth.changeFirstLogin(false);
       },
       showBackButton: true,
       showNextButton: true,
+      columnMainAxisAlignment: MainAxisAlignment.center,
       backText: Text(
         lang.back,
         style: theme.textTheme.bodyText1,
@@ -86,6 +82,16 @@ class _WelcomePageState extends State<WelcomePage> {
       skipText: Text(
         lang.skip,
         style: theme.textTheme.bodyText1,
+      ),
+    );
+  }
+
+  Widget test(ThemeData theme) {
+    return CircleAvatar(
+      backgroundColor: theme.primaryColor,
+      child: Icon(
+        Icons.done,
+        color: theme.colorScheme.primary,
       ),
     );
   }
@@ -135,33 +141,33 @@ class LanguageSelection extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .5,
       child: ListView.builder(
-          itemCount: languageConstant.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Card(
-                color: theme.primaryColor,
-                child: ListTile(
-                  onTap: () async {
-                    await preferences
-                        .changeLocale(languageConstant[index].shortName);
-                    print(preferences.currentLocale);
-                  },
-                  title: Text(
-                    languageConstant[index].name,
-                    style: TextStyle(color: theme.colorScheme.primary),
-                  ),
-                  leading: CircleAvatar(
-                    backgroundColor: theme.colorScheme.primary,
-                    child: Text(
-                      languageConstant[index].shortName,
-                      style: TextStyle(color: theme.colorScheme.secondary),
-                    ),
+        itemCount: languageConstant.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Card(
+              color: theme.primaryColor,
+              child: ListTile(
+                onTap: () async {
+                  await preferences
+                      .changeLocale(languageConstant[index].shortName);
+                },
+                title: Text(
+                  languageConstant[index].name,
+                  style: TextStyle(color: theme.colorScheme.primary),
+                ),
+                leading: CircleAvatar(
+                  backgroundColor: theme.colorScheme.primary,
+                  child: Text(
+                    languageConstant[index].shortName,
+                    style: TextStyle(color: theme.colorScheme.secondary),
                   ),
                 ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }

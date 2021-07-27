@@ -4,33 +4,60 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthProvider with ChangeNotifier {
   bool _isLoggedIn = false;
   bool _isLoading = false;
+  bool _isFirstLogin = false;
+  String? _password;
+  
 
   bool get isLoggedIn => _isLoggedIn;
   bool get isLoading => _isLoading;
+  bool get isFirstLogin => _isFirstLogin;
+  String? get password => _password;
+
+  Future<void> changeFirstLogin(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setBool('isFirstLogin', value);
+    _isFirstLogin = value;
+
+    notifyListeners();
+  }
 
   Future<void> setStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (prefs.getBool('isLoggedIn') == true) {
-      _isLoggedIn = true;
-      prefs.setBool('isLoggedIn', true);
+    if (prefs.getBool('isFirstLogin') == null ||
+        prefs.getBool('isFirstLogin') == true) {
+      changeFirstLogin(true);
+    } else {
+      changeFirstLogin(false);
     }
+    _password = prefs.getString('password');
+
+    notifyListeners();
+  }
+
+  Future<void> setPassword(String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString('password', value);
+    _password = value;
+    _isLoggedIn = true;
+
+    notifyListeners();
   }
 
   Future<void> setLoggedIn() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
     _isLoggedIn = true;
-    prefs.setBool('isLoggedIn', true);
 
     notifyListeners();
   }
 
   Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isLoggedIn', false);
-    print(prefs.getBool('isLoggedIn'));
+    await changeFirstLogin(true);
     _isLoggedIn = false;
+    await prefs.clear();
+
     notifyListeners();
   }
 }

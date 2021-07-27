@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "appPassword": MessageLookupByLibrary.simpleMessage(
+            "Please confirm your password"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createPassword":
@@ -31,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editPassword": MessageLookupByLibrary.simpleMessage("Edit Password"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("Please enter password"),
         "everythingDone":
             MessageLookupByLibrary.simpleMessage("Everything Done!"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
+        "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "theme": MessageLookupByLibrary.simpleMessage("Dark Theme"),

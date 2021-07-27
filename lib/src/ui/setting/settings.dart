@@ -48,7 +48,7 @@ class SettingsPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         onTap: () async {
-          await authProvider.logout();
+          Navigator.pushNamed(context, '/account');
         },
       ),
     ];

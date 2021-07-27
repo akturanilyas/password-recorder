@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Hesap"),
+        "appPassword":
+            MessageLookupByLibrary.simpleMessage("Lütfen şifrenizi doğrulayın"),
         "back": MessageLookupByLibrary.simpleMessage("Geri"),
         "create": MessageLookupByLibrary.simpleMessage("Oluştur"),
         "createPassword": MessageLookupByLibrary.simpleMessage("Şifre Oluştur"),
@@ -30,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Tamam"),
         "edit": MessageLookupByLibrary.simpleMessage("Düzenle"),
         "editPassword": MessageLookupByLibrary.simpleMessage("Şifre Düzenle"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("Lütfen şifrenizi giriniz"),
         "everythingDone": MessageLookupByLibrary.simpleMessage("Her şey tamam"),
         "exit": MessageLookupByLibrary.simpleMessage("Çıkış"),
         "language": MessageLookupByLibrary.simpleMessage("Dil"),
@@ -38,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Şifre"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil Seçiniz"),
+        "selectTheme": MessageLookupByLibrary.simpleMessage("selectTheme"),
         "settings": MessageLookupByLibrary.simpleMessage("Ayarlar"),
         "skip": MessageLookupByLibrary.simpleMessage("Geç"),
         "theme": MessageLookupByLibrary.simpleMessage("Koyu Tema"),

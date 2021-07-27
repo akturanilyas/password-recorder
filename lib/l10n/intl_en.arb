@@ -22,5 +22,8 @@
   "welcomeLang":"Please select preffered language",
   "welcomeTheme":"Please select preffered color mode",
   "welcomeDone":"Everything done, we can start",
-  "everythingDone": "Everything Done!"
+  "everythingDone": "Everything Done!",
+  "selectTheme":"Select Theme",
+  "enterPassword":"Please enter password",
+  "appPassword":"Please confirm your password"
 }

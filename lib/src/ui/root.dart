@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:password_saver/src/provider/auth_provider.dart';
 import 'package:password_saver/src/provider/preferences_provider.dart';
+import 'package:password_saver/src/ui/home/home.dart';
 import 'package:password_saver/src/ui/loading/loading.dart';
+import 'package:password_saver/src/ui/welcome/welcome_page.dart';
+import 'package:password_saver/src/widget/lock_widget.dart';
 import 'package:provider/provider.dart';
-import 'welcome/welcome_page.dart';
-import 'home/home.dart';
 
 class Root extends StatefulWidget {
   const Root({Key? key}) : super(key: key);
@@ -30,10 +31,14 @@ class _RootState extends State<Root> {
 
     if (authProvider.isLoading || preferencesProvider.isLoading) {
       return LoadingPage();
+    } else if (authProvider.isFirstLogin) {
+      return WelcomePage();
+    } else if (!authProvider.isLoggedIn) {
+      return LockScreen();
     } else if (authProvider.isLoggedIn) {
       return Home();
-    } else {
-      return WelcomePage();
     }
+    print('sıkıntı var');
+    return WelcomePage();
   }
 }
