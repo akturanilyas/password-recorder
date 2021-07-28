@@ -163,8 +163,11 @@ class _AddPasswordState extends State<AddPassword> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(32)))),
       onPressed: () {
-        passwordProvider.createPassword(nameController.value.text,
-            passwordController.value.text, descriptionController.value.text);
+        passwordProvider.createPassword(
+            nameController.value.text,
+            passwordController.value.text,
+            descriptionController.value.text,
+            lang);
       },
       child: Text(
         lang.create,

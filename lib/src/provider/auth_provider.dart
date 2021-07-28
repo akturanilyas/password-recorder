@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:password_saver/generated/l10n.dart';
 
 class AuthProvider with ChangeNotifier {
   bool _isLoggedIn = false;
@@ -15,18 +16,17 @@ class AuthProvider with ChangeNotifier {
   Future<String> checkAndChangePassword(
     String currentPassword,
     String newPassword,
-    confirmPassword,
+    String confirmPassword,
+    BuildContext context,
   ) async {
+    final lang = S.of(context);
     if (_password != currentPassword) {
-      print('şifreler uyuşmay');
-      return 'şifreler uyuşmmuyor';
+      return lang.currentPasswordDoNotMatch;
     } else if (newPassword != confirmPassword) {
-      print('yeni şifreler uyuşmay');
-      return 'Yeni şifreler uyuşmuyor';
+      return lang.newPasswordNotmatch;
     } else {
       await setPassword(newPassword);
-      print('başarılı');
-      return 'başarılı';
+      return lang.passwordChanged;
     }
   }
 

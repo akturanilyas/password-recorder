@@ -73,8 +73,11 @@ Future<bool?> passwordPopUp(BuildContext context, {Password? myPassword}) {
                       passwordController.text,
                       descriptionController.text);
                 } else {
-                  passwordProvider.createPassword(nameController.text,
-                      passwordController.text, descriptionController.text);
+                  passwordProvider.createPassword(
+                      nameController.text,
+                      passwordController.text,
+                      descriptionController.text,
+                      lang);
                 }
                 Navigator.pop(context);
               },

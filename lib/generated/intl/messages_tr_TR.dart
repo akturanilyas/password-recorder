@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Yeni şifreyi tekrar giriniz"),
         "create": MessageLookupByLibrary.simpleMessage("Oluştur"),
         "createPassword": MessageLookupByLibrary.simpleMessage("Şifre Oluştur"),
+        "currentPassword": MessageLookupByLibrary.simpleMessage("Mevcut şifre"),
+        "currentPasswordDoNotMatch": MessageLookupByLibrary.simpleMessage(
+            "Mevcut şifre girdiğiniz şifre ile uyuşmuyor"),
         "delete": MessageLookupByLibrary.simpleMessage("Sil"),
         "description": MessageLookupByLibrary.simpleMessage("Açıklama"),
         "done": MessageLookupByLibrary.simpleMessage("Tamam"),
@@ -41,8 +44,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Dil"),
         "myPassword": MessageLookupByLibrary.simpleMessage("Şifrelerim"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Yeni şifre"),
+        "newPasswordNotmatch": MessageLookupByLibrary.simpleMessage(
+            "Yeni şifre ile onayladığınız şifre birbiri ile uyuşmuyor"),
         "next": MessageLookupByLibrary.simpleMessage("İleri"),
         "password": MessageLookupByLibrary.simpleMessage("Şifre"),
+        "passwordChanged": MessageLookupByLibrary.simpleMessage(
+            "Şifre başarı ile değiştirildi"),
+        "passwordCreated": MessageLookupByLibrary.simpleMessage(
+            "Password successfully created"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Dil Seçiniz"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("selectTheme"),

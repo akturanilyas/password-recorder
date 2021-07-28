@@ -27,6 +27,10 @@
   "enterPassword":"Lütfen şifrenizi giriniz",
   "appPassword":"Lütfen şifrenizi doğrulayın",
   "newPassword":"Yeni şifre",
-  "exPassword":"Mevcut şifre",
-  "confirmPassword":"Yeni şifreyi tekrar giriniz"
+  "currentPassword":"Mevcut şifre",
+  "confirmPassword":"Yeni şifreyi tekrar giriniz",
+  "currentPasswordDoNotMatch":"Mevcut şifre girdiğiniz şifre ile uyuşmuyor",
+  "newPasswordNotmatch":"Yeni şifre ile onayladığınız şifre birbiri ile uyuşmuyor",
+  "passwordChanged":"Şifre başarı ile değiştirildi",
+  "passwordCreated": "Password successfully created"
 }

@@ -28,5 +28,9 @@
   "appPassword":"Please confirm your password",
   "newPassword":"New password",
   "currentPassword":"Current password",
-  "confirmPassword":"Confirm password"
+  "confirmPassword":"Confirm password",
+  "currentPasswordDoNotMatch":"Current password does not match the password you entered",
+  "newPasswordNotmatch":"New password and confirm password not match",
+  "passwordChanged":"Password successfully changed",
+  "passwordCreated":"Password successfully created"
 }

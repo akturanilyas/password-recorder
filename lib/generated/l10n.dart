@@ -349,6 +349,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Current password does not match the password you entered`
+  String get currentPasswordDoNotMatch {
+    return Intl.message(
+      'Current password does not match the password you entered',
+      name: 'currentPasswordDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password and confirm password not match`
+  String get newPasswordNotmatch {
+    return Intl.message(
+      'New password and confirm password not match',
+      name: 'newPasswordNotmatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password successfully changed`
+  String get passwordChanged {
+    return Intl.message(
+      'Password successfully changed',
+      name: 'passwordChanged',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password successfully created`
+  String get passwordCreated {
+    return Intl.message(
+      'Password successfully created',
+      name: 'passwordCreated',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

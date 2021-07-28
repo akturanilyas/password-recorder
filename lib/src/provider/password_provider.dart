@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_saver/generated/l10n.dart';
 import 'package:password_saver/src/model/password_model.dart';
 import 'package:password_saver/src/model/request/edit_password_request_model.dart';
 import 'package:password_saver/src/model/request/password_request_model.dart';
@@ -21,14 +22,14 @@ class PasswordProvider with ChangeNotifier {
   }
 
   Future<String> createPassword(
-      String name, String password, String description) async {
+      String name, String password, String description, S lang) async {
     PasswordRequest request = PasswordRequest(name, password, description);
 
     await db.createPassword(request);
     // TODO Create Password
     //todo Add: Handler
     getMyPasswords();
-    return 'text';
+    return lang.passwordCreated;
   }
 
   Future<String> editPassword(

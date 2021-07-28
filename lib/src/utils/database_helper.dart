@@ -22,7 +22,7 @@ class DBProvider {
       path,
       version: 1,
       onOpen: (db) {
-        print('Database succesfully opnened');
+        print('Database successfully opnened');
       },
       onCreate: (Database db, int version) async {
         // todo change there
@@ -34,7 +34,7 @@ class DBProvider {
           'password TEXT '
           ')',
         );
-        print('Database succesfully created');
+        print('Database successfully created');
       },
     );
   }
@@ -71,7 +71,8 @@ class DBProvider {
         res.isNotEmpty ? res.map((c) => Password.fromMap(c)).toList() : [];
     return list;
   }
-  Future <int>updatePassword(EditPasswordRequest editedPassword) async {
+
+  Future<int> updatePassword(EditPasswordRequest editedPassword) async {
     final db = await database;
     var res = await db!.update('Password', editedPassword.toMap(),
         where: 'id = ?', whereArgs: [editedPassword.id]);

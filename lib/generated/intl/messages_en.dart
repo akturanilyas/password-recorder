@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create Password"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
+        "currentPasswordDoNotMatch": MessageLookupByLibrary.simpleMessage(
+            "Current password does not match the password you entered"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -45,8 +47,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "myPassword": MessageLookupByLibrary.simpleMessage("My Passwords"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "newPasswordNotmatch": MessageLookupByLibrary.simpleMessage(
+            "New password and confirm password not match"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordChanged": MessageLookupByLibrary.simpleMessage(
+            "Password successfully changed"),
+        "passwordCreated": MessageLookupByLibrary.simpleMessage(
+            "Password successfully created"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
