@@ -25,9 +25,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "appPassword": MessageLookupByLibrary.simpleMessage(
             "Please confirm your password"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createPassword":
             MessageLookupByLibrary.simpleMessage("Create Password"),
+        "currentPassword":
+            MessageLookupByLibrary.simpleMessage("Current password"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -40,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "myPassword": MessageLookupByLibrary.simpleMessage("My Passwords"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Password Name"),

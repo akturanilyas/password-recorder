@@ -25,5 +25,8 @@
   "everythingDone": "Her şey tamam",
   "selectTheme":"selectTheme",
   "enterPassword":"Lütfen şifrenizi giriniz",
-  "appPassword":"Lütfen şifrenizi doğrulayın"
+  "appPassword":"Lütfen şifrenizi doğrulayın",
+  "newPassword":"Yeni şifre",
+  "exPassword":"Mevcut şifre",
+  "confirmPassword":"Yeni şifreyi tekrar giriniz"
 }

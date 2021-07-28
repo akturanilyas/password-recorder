@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:password_saver/src/provider/password_provider.dart';
 import 'package:password_saver/src/provider/preferences_provider.dart';
-
 import 'package:password_saver/src/widget/password_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:password_saver/generated/l10n.dart';

@@ -6,12 +6,29 @@ class AuthProvider with ChangeNotifier {
   bool _isLoading = false;
   bool _isFirstLogin = false;
   String? _password;
-  
 
   bool get isLoggedIn => _isLoggedIn;
   bool get isLoading => _isLoading;
   bool get isFirstLogin => _isFirstLogin;
   String? get password => _password;
+
+  Future<String> checkAndChangePassword(
+    String currentPassword,
+    String newPassword,
+    confirmPassword,
+  ) async {
+    if (_password != currentPassword) {
+      print('şifreler uyuşmay');
+      return 'şifreler uyuşmmuyor';
+    } else if (newPassword != confirmPassword) {
+      print('yeni şifreler uyuşmay');
+      return 'Yeni şifreler uyuşmuyor';
+    } else {
+      await setPassword(newPassword);
+      print('başarılı');
+      return 'başarılı';
+    }
+  }
 
   Future<void> changeFirstLogin(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

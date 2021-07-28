@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appPassword":
             MessageLookupByLibrary.simpleMessage("Lütfen şifrenizi doğrulayın"),
         "back": MessageLookupByLibrary.simpleMessage("Geri"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Yeni şifreyi tekrar giriniz"),
         "create": MessageLookupByLibrary.simpleMessage("Oluştur"),
         "createPassword": MessageLookupByLibrary.simpleMessage("Şifre Oluştur"),
         "delete": MessageLookupByLibrary.simpleMessage("Sil"),
@@ -38,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit": MessageLookupByLibrary.simpleMessage("Çıkış"),
         "language": MessageLookupByLibrary.simpleMessage("Dil"),
         "myPassword": MessageLookupByLibrary.simpleMessage("Şifrelerim"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Yeni şifre"),
         "next": MessageLookupByLibrary.simpleMessage("İleri"),
         "password": MessageLookupByLibrary.simpleMessage("Şifre"),
         "passwordName": MessageLookupByLibrary.simpleMessage("Şifre İsmi"),

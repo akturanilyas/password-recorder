@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screen_lock/configurations/input_button_config.dart';
 import 'package:flutter_screen_lock/configurations/screen_lock_config.dart';
 import 'package:flutter_screen_lock/screen_lock.dart';
@@ -16,45 +17,110 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  bool isPassword = false;
   @override
-  Widget build(BuildContext context) {
-    if (isPassword == false) {
-      return ChangePasswordWidget(
-          isConfirmation: false, isPassword: isPassword);
-    } else {
-      return ChangePasswordWidget(isConfirmation: true, isPassword: isPassword);
-    }
+  void dispose() {
+    //TODO dispose
+    super.dispose();
   }
 
-  Widget ChangePasswordWidget(
-      {required bool isConfirmation, required bool isPassword}) {
-    final authProvider = Provider.of<AuthProvider>(context, listen: true);
+  TextEditingController exPassword = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    final lang = S.of(context);
     final theme =
         Provider.of<PreferencesProvider>(context, listen: true).getTheme();
-    String? password = authProvider.password;
-    final lang = S.of(context);
-    return ScreenLock(
-      screenLockConfig: ScreenLockConfig(backgroundColor: theme.canvasColor),
-      inputButtonConfig: InputButtonConfig(
-        textStyle: TextStyle(color: theme.colorScheme.primary, fontSize: 32),
-        buttonStyle: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(theme.primaryColor),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              style: theme.textTheme.headline1,
+              cursorColor: theme.canvasColor,
+              controller: exPassword,
+              decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.text_format,
+                    color: theme.canvasColor,
+                  ),
+                  labelText: lang.currentPassword,
+                  labelStyle: theme.textTheme.headline1),
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              cursorColor: theme.canvasColor,
+              style: theme.textTheme.headline1,
+              controller: newPassword,
+              decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.lock,
+                    color: theme.canvasColor,
+                  ),
+                  labelText: lang.newPassword,
+                  labelStyle: theme.textTheme.headline1),
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              style: theme.textTheme.headline1,
+              cursorColor: theme.textTheme.headline1!.color,
+              controller: confirmPassword,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.description,
+                  color: theme.canvasColor,
+                ),
+                labelText: lang.confirmPassword,
+                labelStyle: theme.textTheme.headline1,
+              ),
+            ),
+            _changePassword(
+                context, theme, lang, exPassword, newPassword, confirmPassword)
+          ],
         ),
       ),
-      title: Text(lang.enterPassword),
-      confirmTitle: Text(lang.appPassword),
-      correctString: password ?? '',
-      // ignore: avoid_bool_literals_in_conditional_expressions
-      confirmation: password == null ? true : false,
-      didError: (errorCount) {
-        // ignore: avoid_print
-        print(errorCount);
+    );
+  }
+
+  TextButton _changePassword(
+    BuildContext context,
+    ThemeData theme,
+    S lang,
+    TextEditingController currentPassword,
+    TextEditingController newPassword,
+    TextEditingController confirmPassword,
+  ) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: true);
+    return TextButton(
+      style: TextButton.styleFrom(
+        fixedSize: Size(MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height * .1),
+        minimumSize: Size(30, 30),
+        backgroundColor: theme.canvasColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(32),
+          ),
+        ),
+      ),
+      onPressed: () async {
+        await authProvider.checkAndChangePassword(
+            currentPassword.text, newPassword.text, confirmPassword.text);
       },
-      didUnlocked: () {},
-      didConfirmed: (password) {
-        authProvider.setPassword(password);
-      },
+      child: Text(
+        lang.create,
+        style: theme.textTheme.bodyText1,
+      ),
     );
   }
 }
